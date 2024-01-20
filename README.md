@@ -14,37 +14,38 @@
 
 To run the project, follow these steps:
 
-1. Clone the repository:
+Clone the repository:
 
-   ```bash
-   git clone https://github.com/UsmanAR/wings-hackathon-5.git
-   ```
+```bash
+git clone https://github.com/UsmanAR/wings-hackathon-5.git
+```
 
-2. Change to the project directory:
+Change to the project directory:
 
-   ```bash
-   cd wings-hackathon-5
-   ```
+```bash
+cd wings-hackathon-5
+```
 
-3. Create a virtual environment:
+Create a virtual environment:
 
-   ```bash
-   python3 -m venv env
-   ```
+```bash
+python3 -m venv env
+```
 
-4. Activate the virtual environment:
+Activate the virtual environment:
 
-   ```bash
-   source env/bin/activate
-   ```
+```bash
+source env/bin/activate
+```
 
-5. Install the required dependencies:
+Install the required dependencies:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-6. Run the main Python script:
-   ```bash
-   python main.py
-   ```
+Run the main Python script:
+
+```bash
+python main.py
+```
