@@ -5,13 +5,15 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.action === "displayLinks") {
     console.log("Extracted Links:", request.links);
+    sendLinksToServer(request.links)
+    
   }
 });
 
 
 
 function sendLinksToServer(links) {
-  const apiUrl = 'http://localhost:8000/receive_links/';
+  const apiUrl = 'http://127.0.0.1:5000/predict';
   const data = { links: links };
 
   fetch(apiUrl, {
