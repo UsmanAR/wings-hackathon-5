@@ -31,3 +31,7 @@ function sendLinksToServer(links) {
       console.error('Error sending links to server:', error);
     });
 }
+
+function refreshButtonClick() {
+  location.reload();
+}
