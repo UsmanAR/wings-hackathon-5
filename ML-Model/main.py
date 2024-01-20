@@ -17,9 +17,11 @@ class PredictLink(Resource):
             for link in links:
                 
                 result_for_link = self.process_link(link)
-                results[link]=result_for_link
-
-            return jsonify({'results': results})
+                results[link]=str(result_for_link)
+            print(type(results))    
+            print(results)
+           
+            return  results
         except Exception as e:
             return jsonify({'error': str(e)}), 400
 
