@@ -4,7 +4,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.action === "displayLinks") {
-    console.log("Extracted Links:", request.links);
     sendLinksToServer(request.links)
     
   }
@@ -26,6 +25,20 @@ function sendLinksToServer(links) {
     .then(response => response.json())
     .then(result => {
       console.log('Server response:', result);
+      count = 0
+      for(re in result)
+      {
+        if(result[re] == '1')
+        {
+          count += 1
+        }
+      }
+      
+      document.querySelector("#detectedCount").innerHTML = count
+
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { action: "highlight",result:result });
+      });
     })
     .catch(error => {
       console.error('Error sending links to server:', error);

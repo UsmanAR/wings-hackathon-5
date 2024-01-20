@@ -18,7 +18,6 @@ class PredictLink(Resource):
                 
                 result_for_link = self.process_link(link)
                 results[link]=str(result_for_link)
-            print(type(results))    
             print(results)
            
             return  results
@@ -29,7 +28,6 @@ class PredictLink(Resource):
         loaded_model = pickle.load(open("XGBoostClassifier.pickle.dat", "rb"))
 
         extract_url = fe.featureExtraction(link)
-        print(extract_url, len(extract_url))
 
         prediction = loaded_model.predict([extract_url])
         return prediction[0]
