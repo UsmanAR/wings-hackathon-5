@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
-from URLFeatureExtraction import featureExtraction
+import pickle
+import URLFeatureExtraction as fe
 
 app = Flask(__name__)
 api = Api(app)
@@ -23,9 +24,13 @@ class PredictLink(Resource):
             return jsonify({'error': str(e)}), 400
 
     def process_link(self, link):
-        # Implement your link processing logic here
-        # For example, call featureExtraction function for each link
-        return featureExtraction(link)
+        loaded_model = pickle.load(open("XGBoostClassifier.pickle.dat", "rb"))
+
+        extract_url = fe.featureExtraction(link)
+        print(extract_url, len(extract_url))
+
+        prediction = loaded_model.predict([extract_url])
+        return prediction[0]
 
 # Endpoints definitions
 api.add_resource(PredictLink, '/predict')

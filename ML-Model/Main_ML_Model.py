@@ -18,7 +18,7 @@ def storeResults(model, a,b):
   acc_test.append(round(b, 3))
 
 
-data0 = pd.read_csv(r"/home/usman/Documents/Jupyter/Phishing-Detector/ML-Model/5.urldata.csv")
+data0 = pd.read_csv(r"5.urldata.csv")
 data = data0.drop(['Domain'], axis = 1).copy()
 
 data.isnull().sum()
@@ -52,5 +52,8 @@ acc_test_xgb = accuracy_score(y_test,y_test_xgb)
 print("XGBoost: Accuracy on training Data: {:.3f}".format(acc_train_xgb))
 print("XGBoost : Accuracy on test Data: {:.3f}".format(acc_test_xgb))
 
-storeResults('XGBoost', acc_train_xgb, acc_test_xgb)
+# storeResults('XGBoost', acc_train_xgb, acc_test_xgb)
+
+# import pickle
+# pickle.dump(xgb, open("XGBoostClassifier.pickle.dat", "wb"))
 
