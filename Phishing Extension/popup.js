@@ -26,6 +26,16 @@ function sendLinksToServer(links) {
     .then(response => response.json())
     .then(result => {
       console.log('Server response:', result);
+      count = 0
+      for(re in result)
+      {
+        console.log(result[re])
+        if(result[re] == '1')
+        {
+          count += 1
+        }
+      }
+      document.querySelector("#detectedCount").innerHTML = count
     })
     .catch(error => {
       console.error('Error sending links to server:', error);
